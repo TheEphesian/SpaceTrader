@@ -1,24 +1,41 @@
-cGx1Z2lucyB7CiAgICBpZCAnY29tLmFuZHJvaWQuYXBwbGljYXRpb24nCn0K
-CmFuZHJvaWQgewogICAgbmFtZXNwYWNlICdjb20uYnJ1Y2VsZXQuc3BhY2V0
-cmFkZXInCiAgICBjb21waWxlU2RrIDM1CgogICAgZGVmYXVsdENvbmZpZyB7
-CiAgICAgICAgYXBwbGljYXRpb25JZCAiY29tLmJydWNlbGV0LnNwYWNldHJh
-ZGVyIgogICAgICAgIG1pblNkayAyMQogICAgICAgIHRhcmdldFNkayAzNQog
-ICAgICAgIHZlcnNpb25Db2RlIDEKICAgICAgICB2ZXJzaW9uTmFtZSAiMS4z
-LjAiCiAgICB9CgogICAgYnVpbGRUeXBlcyB7CiAgICAgICAgcmVsZWFzZSB7
-CiAgICAgICAgICAgIG1pbmlmeUVuYWJsZWQgdHJ1ZQogICAgICAgICAgICBw
-cm9ndWFyZEZpbGVzIGdERlZmF1bHRQcm9ndWFyZEZpbGUoJ3Byb2d1YXJk
-LWFuZHJvaWQtb3B0aW1pemUudHh0JyksICdwcm9ndWFyZC1wcm9qZWN0LnR4
-dCkKICAgICAgICB9CiAgICB9CgogICAgY29tcGlsZU9wdGlvbnMgewogICAg
-ICAgIHNvdXJjZUNvbXBhdGliaWxpdHkgSmF2YVZlcnNpb24uVkVSU0lPTl8x
-MQogICAgICAgIHRhcmdldENvbXBhdGliaWxpdHkgSmF2YVZlcnNpb24uVkVS
-U0lPTl8xMQogICAgfQp9CgovLyBrb3RsaW4tc3RkbGliIDEuOCsgYWJzb3Ji
-cyBqZDs3L2pkazg7IGV4Y2x1ZGUgdGhlIG9sZCBzcGxpdCBhcnRpZmFjdHMg
-dG8gYXZvaWQgZHVwbGljYXRlcwpjb25maWd1cmF0aW9ucy5hbGwgewogICAg
-ZXhjbHVkZSBncm91cDogJ29yZy5qZXRicmFpbnMua290bGluJywgbW9kdWxl
-OiAna290bGluLXN0ZGxpYi1qZDs3JwogICAgZXhjbHVkZSBncm91cDogJ29y
-Zy5qZXRicmFpbnMua290bGluJywgbW9kdWxlOiAna290bGluLXN0ZGxpYi1q
-ZDs4Jwp9CgpkZXBlbmRlbmNpZXMsCiAgICBpbXBsZW1lbnRhdGlvbiAnYW5k
-cm9pZHguYXBwY29tcGF0OmFwcGNvbWF0OjEuNy4xJwogICAgaW1wbGVtZW50hdGlvbiAnYW5kcm9pZHgudmlld3BhZ2VyOnZpZXdwYWdlcjoxLjAuMCcK
-ICAgIGltcGxlbWVudGF0aW9uICdhbmRyb2lkeC5mcmFnbWVudDpmcmFnbWVu
-dDoxLjcuMCcKICAgIGltcGxlbWVudGF0aW9uICdhbmRyb2lkeC5yZWN5Y2xl
-cnZpZXc6cmVjeWNsZXJ2aWV3OjEuMy4yJwp9Cg==
+plugins {
+ id 'com.android.application'
+}
+
+android {
+ namespace 'com.brucelet.spacetrader'
+ compileSdk 35
+
+ defaultConfig {
+  applicationId "com.brucelet.spacetrader"
+  minSdk 21
+  targetSdk 35
+  versionCode 1
+  versionName "1.3.0"
+ }
+
+ buildTypes {
+  release {
+   minifyEnabled true
+   proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-project.txt'
+  }
+ }
+
+ compileOptions {
+  sourceCompatibility JavaVersion.VERSION_11
+  targetCompatibility JavaVersion.VERSION_11
+ }
+}
+
+// kotlin-stdlib 1.8+ absorbs jdk7/jdk8; exclude the old split artifacts to avoid duplicates
+configurations.all {
+ exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'
+ exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
+}
+
+dependencies {
+ implementation 'androidx.appcompat:appcompat:1.7.1'
+ implementation 'androidx.viewpager:viewpager:1.0.0'
+ implementation 'androidx.fragment:fragment:1.7.0'
+ implementation 'androidx.recyclerview:recyclerview:1.3.2'
+}
